@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .navbar {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .list-group-item {
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .list-group-item:hover {
+            background-color: #2a2a2a;
+            color: #ffffff;
+        }
+
+        .footer {
+            background-color: #111;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+
+        #wrapper {
+            display: flex;
+            align-items: stretch;
+        }
+
+        #sidebar-wrapper {
+            min-width: 250px;
+            max-width: 250px;
+            background-color: #111;
+            color: white;
+            margin-left: -250px;
+            /* Sidebar starts hidden */
+            transition: all 0.3s;
+        }
+
+        #sidebar-wrapper.toggled {
+            margin-left: 0;
+            /* Sidebar will show when toggled */
+        }
+
+        #sidebar-wrapper .sidebar-heading {
+            padding: 0.875rem 1.25rem;
+            font-size: 1.2rem;
+            background-color: #1a1a1a;
+        }
+
+        #sidebar-wrapper .list-group {
+            width: 100%;
+        }
+
+        #sidebar-wrapper .list-group-item {
+            background-color: #111;
+            color: white;
+            border: none;
+        }
+
+        #sidebar-wrapper .list-group-item:hover {
+            background-color: #575757;
+        }
+
+        #page-content-wrapper {
+            flex: 1;
+            padding: 20px;
+        }
+
+        #menu-toggle {
+            margin: 10px;
+        }
+
+        @media (max-width: 768px) {
+            #sidebar-wrapper {
+                margin-left: -250px;
+            }
+
+            #sidebar-wrapper.toggled {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <!-- React and ReactDOM via CDN -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- Babel to enable JSX syntax -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Bootstrap and jQuery Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- React Code -->
+    <script type="text/babel">
+        function Dashboard() {
+            const [sidebarToggled, setSidebarToggled] = React.useState(false);
+
+            const toggleSidebar = () => {
+                setSidebarToggled(!sidebarToggled);
+            };
+
+            return (
+                <div id="wrapper" className={sidebarToggled ? "toggled" : ""}>
+                    {/* Sidebar */}
+                    <div id="sidebar-wrapper" className={sidebarToggled ? "toggled" : ""}>
+                        <div className="sidebar-heading">Dashboard</div>
+                        <div className="list-group list-group-flush">
+                            <a href="#" className="list-group-item list-group-item-action bg-dark">Home</a>
+                            <a href="#" className="list-group-item list-group-item-action bg-dark">Profile</a>
+                            <a href="#" className="list-group-item list-group-item-action bg-dark">Settings</a>
+                            <a href="#" className="list-group-item list-group-item-action bg-dark">Messages</a>
+                            <a href="#" className="list-group-item list-group-item-action bg-dark">Notifications</a>
+                            <a href="#" className="list-group-item list-group-item-action bg-dark">Logout</a>
+                        </div>
+                    </div>
+                    {/* /#sidebar-wrapper */}
+
+                    {/* Page Content */}
+                    <div id="page-content-wrapper">
+                        <nav className="navbar navbar-expand-lg navbar-dark bg-primary border-bottom">
+                            <button className="btn btn-primary" id="menu-toggle" onClick={toggleSidebar}>
+                                <i className="fas fa-bars"></i>
+                            </button>
+                            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
+                                    <li className="nav-item active">
+                                        <a className="nav-link" href="#">Home</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="#">Profile</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link" href="#">Logout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <div className="container-fluid">
+                            <h1 className="mt-4 text-white">Dashboard Overview</h1>
+                            <div className="row mt-4">
+                                {/* Sales */}
+                                <div className="col-lg-3">
+                                    <div className="card bg-dark text-white mb-4">
+                                        <div className="card-body">
+                                            <div className="d-flex justify-content-between">
+                                                <div>Sales</div>
+                                                <i className="fas fa-shopping-cart"></i>
+                                            </div>
+                                            <h5 className="mt-2">3,200</h5>
+                                        </div>
+                                        <div className="card-footer text-right">
+                                            <span className="badge badge-primary">+12%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Customers */}
+                                <div className="col-lg-3">
+                                    <div className="card bg-dark text-white mb-4">
+                                        <div className="card-body">
+                                            <div className="d-flex justify-content-between">
+                                                <div>Customers</div>
+                                                <i className="fas fa-users"></i>
+                                            </div>
+                                            <h5 className="mt-2">1,200</h5>
+                                        </div>
+                                        <div className="card-footer text-right">
+                                            <span className="badge badge-success">+8%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Revenue */}
+                                <div className="col-lg-3">
+                                    <div className="card bg-dark text-white mb-4">
+                                        <div className="card-body">
+                                            <div className="d-flex justify-content-between">
+                                                <div>Revenue</div>
+                                                <i className="fas fa-dollar-sign"></i>
+                                            </div>
+                                            <h5 className="mt-2">$14,000</h5>
+                                        </div>
+                                        <div className="card-footer text-right">
+                                            <span className="badge badge-info">+20%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* New Users */}
+                                <div className="col-lg-3">
+                                    <div className="card bg-dark text-white mb-4">
+                                        <div className="card-body">
+                                            <div className="d-flex justify-content-between">
+                                                <div>New Users</div>
+                                                <i className="fas fa-user-plus"></i>
+                                            </div>
+                                            <h5 className="mt-2">45</h5>
+                                        </div>
+                                        <div className="card-footer text-right">
+                                            <span className="badge badge-warning">+5%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Charts and Graphs Section */}
+                            <div className="row mt-4">
+                                {/* Sales Chart */}
+                                <div className="col-lg-8">
+                                    <div className="card bg-dark text-white mb-4">
+                                        <div className="card-body">
+                                            <h5 className="card-title">Sales Overview</h5>
+                                            <div id="sales-chart" style={{ height: '250px' }}>
+                                                {/* Placeholder for Chart */}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Notifications */}
+                                <div className="col-lg-4">
+                                    <div className="card bg-dark text-white mb-4">
+                                        <div className="card-body">
+                                            <h5 className="card-title">Notifications</h5>
+                                            <ul className="list-group">
+                                                <li className="list-group-item bg-dark text-white">
+                                                    <i className="fas fa-bell"></i> New order received
+                                                </li>
+                                                <li className="list-group-item bg-dark text-white">
+                                                    <i className="fas fa-user-plus"></i> New user registered
+                                                </li>
+                                                <li className="list-group-item bg-dark text-white">
+                                                    <i className="fas fa-chart-line"></i> Sales target achieved
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Task List and Activity Feed Section */}
+                            <div className="row mt-4">
+                                {/* Task List */}
+                                <div className="col-lg-6">
+                                    <div className="card bg-dark text-white mb-4">
+                                        <div className="card-body">
+                                            <h5 className="card-title">Task List</h5>
+                                            <ul className="list-group">
+                                                <li className="list-group-item bg-dark text-white d-flex justify-content-between">
+                                                    <span>Complete UI Design</span>
+                                                    <span><input type="checkbox" /></span>
+                                                </li>
+                                                <li className="list-group-item bg-dark text-white d-flex justify-content-between">
+                                                    <span>Fix bugs in dashboard</span>
+                                                    <span><input type="checkbox" /></span>
+                                                </li>
+                                                <li className="list-group-item bg-dark text-white d-flex justify-content-between">
+                                                    <span>Prepare project report</span>
+                                                    <span><input type="checkbox" /></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Activity Feed */}
+                                <div className="col-lg-6">
+                                    <div className="card bg-dark text-white mb-4">
+                                        <div className="card-body">
+                                            <h5 className="card-title">Activity Feed</h5>
+                                            <ul className="list-group">
+                                                <li className="list-group-item bg-dark text-white">
+                                                    <i className="fas fa-check-circle"></i> Task "UI Design" completed
+                                                </li>
+                                                <li className="list-group-item bg-dark text-white">
+                                                    <i className="fas fa-exclamation-circle"></i> Bug reported in dashboard
+                                                </li>
+                                                <li className="list-group-item bg-dark text-white">
+                                                    <i className="fas fa-comment-dots"></i> Comment added to task "Report"
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Footer */}
+                            <footer className="footer mt-auto py-3 bg-dark">
+                                <div className="container text-center">
+                                    <span className="text-white">© 2024 Futuristic Dashboard. All rights reserved.</span>
+                                </div>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<Dashboard />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>

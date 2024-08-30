@@ -1,0 +1,62 @@
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    transition: margin-left 0.3s;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    transition: margin-left 0.3s;
+}
+
+.sidebar {
+    background: #343a40;
+    color: white;
+    width: 250px;
+    transition: width 0.3s;
+    position: fixed;
+    top: 56px; /* Height of the header */
+    bottom: 56px; /* Height of the footer */
+    overflow: auto;
+}
+
+.sidebar-closed .sidebar {
+    width: 80px;
+}
+
+.sidebar .nav-link {
+    color: white;
+}
+
+.content {
+    flex: 1;
+    margin-left: 250px;
+    transition: margin-left 0.3s;
+    padding: 20px;
+}
+
+.sidebar-closed .content {
+    margin-left: 80px;
+}
+
+.toggle-btn {
+    margin-bottom: 20px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}

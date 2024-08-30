@@ -1,0 +1,147 @@
+
+/* Style the container */
+.id-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f7f7;
+}
+
+.id-card {
+  width: 300px;
+  height: 500px;
+  background: #283048;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #859398, #283048);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #859398, #283048); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.header-id {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.id-card img.profile {
+  border-radius: 50%;
+  border: 1px solid #fff;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+.id-card h2 {
+  margin: 0;
+  font-size: 22px;
+}
+.id-card p {
+  margin: 5px 0;
+}
+.id-card .details {
+  padding: 10px;
+}
+.id-card .qr-code {
+  margin-top: 10px;
+
+}
+.id-card img.qr {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+/* Style the fields */
+.field {
+  margin-bottom: 6px;
+}
+
+/* Style the QR code field */
+.qr-code {
+  margin: -5px;
+}
+
+/* Form Container Styles */
+.form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Label Styles */
+.form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Input Styles */
+.form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* File Input Styles */
+.form input[type="file"] {
+  margin-bottom: 20px;
+}
+
+/* Button Styles */
+.form button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Media query for responsiveness */
+@media screen and (max-width: 600px) {
+  .form {
+    max-width: 100%;
+  }
+}
+
+/* Container to hold both gutter containers */
+.containerx {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  /* Adjust the gutter size as needed */
+}
+
+/* Style for the gutter container */
+.gutter-container {
+  flex: 1;
+  /* Takes up all available space */
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  /* Optional: Add a border for better visibility */
+}
+
+/* Media query for mobile view */
+@media screen and (max-width: 600px) {
+
+  /* Stack containers on small screens */
+  .containerx {
+    flex-direction: column;
+  }
+}

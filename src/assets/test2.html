@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .navbar {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .list-group-item {
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .list-group-item:hover {
+            background-color: #2a2a2a;
+            color: #ffffff;
+        }
+
+        .footer {
+            background-color: #111;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+
+        #wrapper {
+            display: flex;
+            align-items: stretch;
+        }
+
+        #sidebar-wrapper {
+            min-width: 250px;
+            max-width: 250px;
+            background-color: #111;
+            color: white;
+            margin-left: -250px;
+            /* Sidebar starts hidden */
+            transition: all 0.3s;
+        }
+
+        #sidebar-wrapper.toggled {
+            margin-left: 0;
+            /* Sidebar will show when toggled */
+        }
+
+        #sidebar-wrapper .sidebar-heading {
+            padding: 0.875rem 1.25rem;
+            font-size: 1.2rem;
+            background-color: #1a1a1a;
+        }
+
+        #sidebar-wrapper .list-group {
+            width: 100%;
+        }
+
+        #sidebar-wrapper .list-group-item {
+            background-color: #111;
+            color: white;
+            border: none;
+        }
+
+        #sidebar-wrapper .list-group-item:hover {
+            background-color: #575757;
+        }
+
+        #page-content-wrapper {
+            flex: 1;
+            padding: 20px;
+        }
+
+        #menu-toggle {
+            margin: 10px;
+        }
+
+        @media (max-width: 768px) {
+            #sidebar-wrapper {
+                margin-left: -250px;
+            }
+
+            #sidebar-wrapper.toggled {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="sidebar-heading">Dashboard</div>
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action bg-dark">Home</a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark">Profile</a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark">Settings</a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark">Messages</a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark">Notifications</a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark">Logout</a>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary border-bottom">
+                <button class="btn btn-primary" id="menu-toggle"><i class="fas fa-bars"></i></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="container-fluid">
+                <h1 class="mt-4 text-white">Dashboard Overview</h1>
+                <div class="row mt-4">
+                    <!-- Sales -->
+                    <div class="col-lg-3">
+                        <div class="card bg-dark text-white mb-4">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>Sales</div>
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                                <h5 class="mt-2">3,200</h5>
+                            </div>
+                            <div class="card-footer text-right">
+                                <span class="badge badge-primary">+12%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Customers -->
+                    <div class="col-lg-3">
+                        <div class="card bg-dark text-white mb-4">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>Customers</div>
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h5 class="mt-2">1,200</h5>
+                            </div>
+                            <div class="card-footer text-right">
+                                <span class="badge badge-success">+8%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Revenue -->
+                    <div class="col-lg-3">
+                        <div class="card bg-dark text-white mb-4">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>Revenue</div>
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                                <h5 class="mt-2">$14,000</h5>
+                            </div>
+                            <div class="card-footer text-right">
+                                <span class="badge badge-info">+20%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- New Users -->
+                    <div class="col-lg-3">
+                        <div class="card bg-dark text-white mb-4">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between">
+                                    <div>New Users</div>
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+
+                                <h5 class="mt-2">45</h5>
+                            </div>
+                            <div class="card-footer text-right">
+                                <span class="badge badge-warning">+5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts and Graphs Section -->
+                <div class="row mt-4">
+                    <!-- Sales Chart -->
+                    <div class="col-lg-8">
+                        <div class="card bg-dark text-white mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Sales Overview</h5>
+                                <div id="sales-chart" style="height: 250px;">
+                                    <!-- Placeholder for Chart -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Notifications -->
+                    <div class="col-lg-4">
+                        <div class="card bg-dark text-white mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Notifications</h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item bg-dark text-white">
+                                        <i class="fas fa-bell"></i> New order received
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white">
+                                        <i class="fas fa-user-plus"></i> New user registered
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white">
+                                        <i class="fas fa-chart-line"></i> Sales target achieved
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Task List and Activity Feed Section -->
+                <div class="row mt-4">
+                    <!-- Task List -->
+                    <div class="col-lg-6">
+                        <div class="card bg-dark text-white mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Task List</h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item bg-dark text-white d-flex justify-content-between">
+                                        <span>Complete UI Design</span>
+                                        <span><input type="checkbox"></span>
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white d-flex justify-content-between">
+                                        <span>Fix bugs in dashboard</span>
+                                        <span><input type="checkbox"></span>
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white d-flex justify-content-between">
+                                        <span>Prepare project report</span>
+                                        <span><input type="checkbox"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Activity Feed -->
+                    <div class="col-lg-6">
+                        <div class="card bg-dark text-white mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Activity Feed</h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item bg-dark text-white">
+                                        <i class="fas fa-check-circle"></i> Task "UI Design" completed
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white">
+                                        <i class="fas fa-exclamation-circle"></i> Bug reported in dashboard
+                                    </li>
+                                    <li class="list-group-item bg-dark text-white">
+                                        <i class="fas fa-comment-dots"></i> Comment added to task "Report"
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <footer class="footer mt-auto py-3 bg-dark">
+                    <div class="container text-center">
+                        <span class="text-white">© 2024 Futuristic Dashboard. All rights reserved.</span>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap and jQuery Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("toggled");
+        });
+    </script>
+</body>
+
+</html>

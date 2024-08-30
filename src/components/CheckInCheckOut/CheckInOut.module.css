@@ -1,0 +1,46 @@
+.timer-container {
+    position: relative;
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #343a40;
+    padding: 20px 30px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .timer-number {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+  }
+  
+  .timer-number.change {
+    opacity: 0;
+  }
+  
+  .timer-number.show {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  .timer-number.animating {
+    animation: slideIn 0.3s ease;
+  }
+  

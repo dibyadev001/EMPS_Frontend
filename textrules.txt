@@ -1,0 +1,8 @@
+navigate(`/nextpage`, { state: { formData } });
+navigate('/register', { state: { message: user.message } });
+
+ import { useLocation } from 'react-router-dom';
+       
+const location = useLocation();
+    const formData = location.state.formData;
+    const message = location.state.message;

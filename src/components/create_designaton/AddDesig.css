@@ -1,0 +1,28 @@
+.search-box {
+  width: 100%;
+  position: relative;
+  display: flex;
+  border:2px solid
+}
+.search-input {
+  width: 100%;
+  outline: none; /* Remove default outline */
+  border: none; /* Remove default border */
+  padding: 10px; /* Add padding for better appearance */
+  border-radius: 5px; /* Add border radius for rounded corners */
+  background: none;
+}
+.search-button {
+  text-align: center;
+  height: 51px;
+  width: 40px;
+  font-size: 20px;
+  outline: none; /* Remove default outline */
+  border: none; /* Remove default border */
+  padding: 10px; /* Add padding for better appearance */
+  background: none;
+
+}
+.container_max{
+    border: 1px solid;
+}

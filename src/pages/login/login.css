@@ -1,0 +1,77 @@
+/* App.css */
+
+/* Left Pane */
+.left-pane {
+    background-color: #000;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logo {
+    width: 300px; /* Adjust the size according to your logo */
+  }
+  
+  /* Right Pane */
+  .right-pane {
+    background-color:whitesmoke;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .login-form {
+    width: 80%;
+    max-width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .login-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Media Query for responsiveness */
+  @media (max-width: 768px) {
+    .left-pane, .right-pane {
+      height: auto;
+      min-height: 50vh;
+      width: 100%;
+    }
+  
+    .login-form {
+      width: 90%;
+    }
+  }
+  
+
+  /* App.css */
+
+/* Animation */
+@keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .login-form {
+    animation: slideInFromRight 1s ease-out;
+  }
+  @media (max-width: 768px) {
+    .left-pane {
+        height: 100vh;
+    }
+    .right-pane
+    {
+        height: 100vh;
+    }
+  }

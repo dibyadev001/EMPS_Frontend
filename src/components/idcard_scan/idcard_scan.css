@@ -1,0 +1,48 @@
+/* styles.css */
+.qr-scanner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .qr-scanner {
+    width: 100%;
+    max-width: 400px;
+    /* Adjust the maximum width as needed */
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  
+  /* Add these styles to your CSS file */
+  
+  .styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .styled-table td,
+  .styled-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .styled-table th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Add any additional styling based on your design preferences */
+  
+  
+  /* Responsive styles for small screens */
+  @media (max-width: 768px) {
+    .qr-scanner-container {
+      padding: 20px;
+    }
+  }

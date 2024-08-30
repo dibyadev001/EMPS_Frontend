@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+        integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"
+        integrity="sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Font Awesome 6 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* CSS styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+ 
+        .wrapper {
+            display: flex;
+            height: 100vh;
+        }
+ 
+        #sidebar {
+            background: #fdfdfd;
+            width: 250px;
+            overflow-x: hidden;
+            transition: width 0.3s ease-in-out;
+        }
+ 
+        #sidebar.active {
+            width: 0;
+        }
+ 
+        #sidebar ul {
+            padding: 10px;
+            list-style: none;
+        }
+ 
+        #sidebar ul li {
+            padding: 5px;
+            transition: background 0.3s;
+            border-radius: 10px;
+        }
+ 
+        #sidebar ul li a {
+            color: #000000;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+ 
+        #sidebar ul li a .menu-card {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+ 
+        #sidebar ul li a .menu-card span {
+            margin-left: 10px;
+        }
+ 
+        #content {
+            flex: 1;
+            transition: margin-left 0.3s;
+            padding: 20px;
+        }
+ 
+        .scrollable-content {
+            max-height: calc(100vh - 5rem);
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #888 transparent;
+            scroll-behavior: smooth;
+            padding: 5px;
+        }
+ 
+        .scrollable-content::-webkit-scrollbar {
+            width: 10px;
+        }
+ 
+        .scrollable-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+ 
+        .scrollable-content::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 20px;
+            border: 2px solid transparent;
+        }
+ 
+        .scrollable-content::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+ 
+        .container-content {
+            justify-content: center;
+        }
+ 
+        .sidebar-header {
+            display: flex;
+            padding: 10px;
+            justify-content: start;
+        }
+ 
+        .navbar {
+            background: #003c23;
+        }
+ 
+        .navbar-brand {
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-left: 10px;
+        }
+ 
+        .navbar-toggle {
+            display: flex;
+            align-items: center;
+        }
+ 
+        .menu-item.active a {
+            background-color: #11532f;
+            color: #ffffff !important;
+            padding: 5px;
+            border-radius: 5px;
+        }
+ 
+        /* Additional styling for icons */
+        .menu-item a .menu-card span i {
+            margin-right: 10px;
+        }
+ 
+        /* Show the toggle button only on mobile devices */
+        @media (min-width: 992px) {
+            .navbar-toggle #sidebarCollapse {
+                display: none;
+            }
+        }
+ 
+        /* Keep the sidebar open on larger screens */
+        @media (min-width: 992px) {
+            #sidebar {
+                width: 250px !important;
+            }
+ 
+            #sidebar.active {
+                width: 250px !important;
+            }
+ 
+            #content {
+                margin-left: 0 !important;
+            }
+        }
+    </style>
+</head>
+ 
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="navbar-toggle">
+                <span class="me-2" type="button" style="color: #fdfdfd; font-size: 20px;" id="sidebarCollapse">☰</span>
+                <span class="navbar-brand"><img src="../images/OBCC_ENG_DATA_Logo.png" alt="" srcset=""
+                        width="210"></span>
+            </div>
+ 
+            <div class="ml-auto">
+                <span class="me-2" style="color: #fdfdfd;font-size: 15px;">Pravat06</span>
+                <img class="rounded-circle"
+                    src="https://static.vecteezy.com/system/resources/thumbnails/004/511/281/small/default-avatar-photo-placeholder-profile-picture-vector.jpg"
+                    alt="" srcset="" width="40">
+            </div>
+        </div>
+    </nav>
+ 
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header bg-light">
+                Main Navigation
+            </div>
+            <ul class="list-unstyled components">
+                <li class="menu-item active">
+                    <a href="#" data-target="dashboard">
+                        <div class="menu-card">
+                            <span><i class="fa-solid fa-gauge"></i>Dashboard</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" data-target="analytics">
+                        <div class="menu-card">
+                            <span><i class="fas fa-chart-line"></i>Analytics</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" data-target="users">
+                        <div class="menu-card">
+                            <span><i class="fas fa-users"></i>Users</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" data-target="attendance">
+                        <div class="menu-card">
+                            <span><i class="fas fa-calendar-check"></i>Attendance</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="#" data-target="settings">
+                        <div class="menu-card">
+                            <span><i class="fas fa-cogs"></i>Settings</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+ 
+        <div id="content" style="background-color: #e8e8e8;">
+            <div class="container-content">
+                <div class="scrollable-content" id="dashboard">
+                    <!-- Content for Dashboard -->
+                    Dashboard content goes here...
+                </div>
+                <div class="scrollable-content" id="analytics">
+                    <!-- Content for Analytics -->
+                    Analytics content goes here...
+                </div>
+                <div class="scrollable-content" id="users">
+                    <!-- Content for Users -->
+                    Users content goes here...
+                </div>
+                <div class="scrollable-content" id="attendance">
+                    <!-- Content for Attendance -->
+                    Attendance content goes here...
+                </div>
+                <div class="scrollable-content" id="settings">
+                    <!-- Content for Settings -->
+                    Settings content goes here...
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <!-- Bootstrap JS dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ 
+    <script>
+        // JavaScript to handle sidebar toggle
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+ 
+            // Initialize the content visibility
+            $('.scrollable-content').hide();
+            $('#dashboard').show(); // Default view
+ 
+            // Set the default active menu item
+            $('.menu-item a[data-target="dashboard"]').closest('.menu-item').addClass('active');
+ 
+            // Function to handle menu clicks
+            function handleMenuClick(targetId) {
+                // Hide all sections
+                $('.scrollable-content').hide();
+ 
+                // Show the selected section
+                $('#' + targetId).show();
+ 
+                // Remove 'active' class from all menu items
+                $('.menu-item').removeClass('active');
+ 
+                // Add 'active' class to the clicked menu item
+                $('a[data-target="' + targetId + '"]').closest('.menu-item').addClass('active');
+            }
+ 
+            // Attach the click event to the menu items
+            $('.menu-item a').on('click', function (e) {
+                e.preventDefault(); // Prevent default anchor behavior
+ 
+                var targetId = $(this).data('target'); // Get target id from data attribute
+ 
+                // Call the function to handle the menu click
+                handleMenuClick(targetId);
+            });
+        });
+    </script>
+</body>
+ 
+</html>
